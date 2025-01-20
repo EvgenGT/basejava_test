@@ -3,19 +3,24 @@ package ru.javawebinar.basejava.storage;
 import ru.javawebinar.basejava.model.Resume;
 
 public class ListStorage extends AbstractStorage{
+
     @Override
-    public void clear() {
+    public void update(Resume r) {
 
     }
 
     @Override
-    public Resume[] getAll() {
-        return new Resume[0];
+    public void save(Resume r) {
+
     }
 
     @Override
-    public int size() {
-        return 0;
+    public Resume get(String uuid) {
+        return null;
     }
 
+    @Override
+    public void delete(String uuid) {
+
+    }
 }
