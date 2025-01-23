@@ -6,7 +6,7 @@ import java.util.*;
 
 public class MainCollections {
     private static final String UUID_1 = "uuid1";
-    private static final Resume RESUME_1 = new Resume(UUID_1);
+    public static final Resume RESUME_1 = new Resume(UUID_1);
 
     private static final String UUID_2 = "uuid2";
     private static final Resume RESUME_2 = new Resume(UUID_2);
