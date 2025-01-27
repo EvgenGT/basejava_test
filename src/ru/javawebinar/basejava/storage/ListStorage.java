@@ -9,6 +9,10 @@ public class ListStorage implements Storage {
 
     protected final Collection<Resume> storage = new ArrayList<>();
 
+    public ListStorage(Collection<Resume> storage) {
+        this.storage.addAll(storage);
+    }
+
     public void clear() {
         storage.clear();
     }
@@ -35,7 +39,7 @@ public class ListStorage implements Storage {
         for (Resume r : storage) {
             if (r.getUuid().equals(uuid)) {
                 storage.remove(r);
-                break;
+                return;
             }
         }
     }
@@ -47,5 +51,4 @@ public class ListStorage implements Storage {
     public int size() {
         return storage.size();
     }
-
 }

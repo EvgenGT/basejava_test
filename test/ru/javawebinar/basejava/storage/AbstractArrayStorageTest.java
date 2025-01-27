@@ -26,6 +26,7 @@ public abstract class AbstractArrayStorageTest {
         storage.save(resume1);
         storage.save(resume2);
         storage.save(resume3);
+
     }
 
     @Test
