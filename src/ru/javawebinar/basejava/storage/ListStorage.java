@@ -7,27 +7,24 @@ import java.util.Collection;
 
 public class ListStorage implements Storage {
 
-    protected final Collection<Resume> storage = new ArrayList<>();
-
-    public ListStorage(Collection<Resume> storage) {
-        this.storage.addAll(storage);
-    }
+    protected final Collection<Resume> collection = new ArrayList<>();
+    protected int size = 0;
 
     public void clear() {
-        storage.clear();
+        collection.clear();
     }
 
     public void update(Resume r) {
-        storage.remove(r);
-        storage.add(r);
+        collection.remove(r);
+        collection.add(r);
     }
 
     public void save(Resume r) {
-        storage.add(r);
+        collection.add(r);
     }
 
     public Resume get(String uuid) {
-        for (Resume r : storage) {
+        for (Resume r : collection) {
             if (r.getUuid().equals(uuid)) {
                 return r;
             }
@@ -36,19 +33,19 @@ public class ListStorage implements Storage {
     }
 
     public void delete(String uuid) {
-        for (Resume r : storage) {
+        for (Resume r : collection) {
             if (r.getUuid().equals(uuid)) {
-                storage.remove(r);
+                collection.remove(r);
                 return;
             }
         }
     }
 
     public Resume[] getAll() {
-        return storage.toArray(new Resume[0]);
+        return collection.toArray(new Resume[0]);
     }
 
     public int size() {
-        return storage.size();
+        return collection.size();
     }
 }

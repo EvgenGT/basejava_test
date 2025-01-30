@@ -19,13 +19,13 @@ public abstract class AbstractArrayStorageTest {
     public void setUp() {
         storage.clear();
 
-        Resume resume1 = new Resume("uuid1", "Name1");
-        Resume resume2 = new Resume("uuid2", "Name2");
-        Resume resume3 = new Resume("uuid3", "Name3");
+        Resume r1 = new Resume("uuid1");
+        Resume r2 = new Resume("uuid2");
+        Resume r3 = new Resume("uuid3");
 
-        storage.save(resume1);
-        storage.save(resume2);
-        storage.save(resume3);
+        storage.save(r1);
+        storage.save(r2);
+        storage.save(r3);
 
     }
 
