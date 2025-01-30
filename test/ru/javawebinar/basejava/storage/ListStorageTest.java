@@ -32,14 +32,22 @@ public class ListStorageTest {
 
     @Test
     public void clear() {
+        collection.clear();
+        assertEquals(0, collection.size(), "Размер хранилища должен составлять 0 (ноль) после очистки.");
     }
 
     @Test
     public void update() {
+        assertEquals(3, collection.size(), "Размер хранилища должен составлять 3 (три) резюме.");
     }
 
     @Test
     public void save() {
+        String uuid4 = "uuid4";
+        Resume resume4 = new Resume(uuid4);
+        collection.add(resume4);
+
+        assertEquals(4, collection.size(), "Размер хранилища должен составлять 4 (четыре) после добавления нового резюме.");
     }
 
     @Test

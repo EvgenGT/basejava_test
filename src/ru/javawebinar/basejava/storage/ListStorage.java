@@ -8,7 +8,7 @@ import java.util.Collection;
 public class ListStorage implements Storage {
 
     protected final Collection<Resume> collection = new ArrayList<>();
-    protected int size = 0;
+//    protected int size = 0;
 
     public void clear() {
         collection.clear();
