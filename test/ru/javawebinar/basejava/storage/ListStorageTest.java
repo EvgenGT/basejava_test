@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ListStorageTest {
 
-    private final ListStorage storage = new ListStorage();
     private final Collection<Resume> collection = new ArrayList<>();
 
     @BeforeEach
