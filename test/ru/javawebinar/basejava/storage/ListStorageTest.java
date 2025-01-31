@@ -21,7 +21,7 @@ public class ListStorageTest {
         Resume resume1 = new Resume(uuid1);
         String uuid2 = "uuid2";
         Resume resume2 = new Resume(uuid2);
-        String uuid3 = "uuid1";
+        String uuid3 = "uuid3";
         Resume resume3 = new Resume(uuid3);
 
         collection.add(resume1);
@@ -52,14 +52,22 @@ public class ListStorageTest {
 
     @Test
     public void get() {
+        assertEquals(3, collection.size(), "Размер хранилища должен составлять 3 (три) резюме.");
+
     }
 
     @Test
     public void delete() {
+        String uuid4 = "uuid4";
+        Resume resume4 = new Resume(uuid4);
+        collection.remove(resume4);
+
+        assertEquals(3, collection.size(), "Размер хранилища должен составлять 4 (четыре) после добавления нового резюме.");
     }
 
     @Test
     public void getAll() {
+        assertEquals(3, collection.size(), "Размер хранилища должен составлять 3 (три) резюме.");
     }
 
     @Test
