@@ -5,7 +5,7 @@ import ru.javawebinar.basejava.model.Resume;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ListStorage implements Storage {
+public class ListStorage extends AbstractStorage {
 
     protected final Collection<Resume> collection = new ArrayList<>();
 //    protected int size = 0;
