@@ -19,7 +19,7 @@ public class MainCollections {
 
     public static void main(String[] args) {
 
-        Collection<Resume> collection = new ArrayList<>();
+        List<Resume> collection = new ArrayList<>();
         collection.add(RESUME_1);
         collection.add(RESUME_2);
         collection.add(RESUME_3);

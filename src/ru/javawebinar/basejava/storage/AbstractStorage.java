@@ -7,6 +7,9 @@ public abstract class AbstractStorage implements Storage {
     public void clear() {
     }
 
+    public void update(Resume r) {
+    }
+
     public Resume[] getAll() {
         return new Resume[0];
     }
@@ -14,4 +17,13 @@ public abstract class AbstractStorage implements Storage {
     public int size() {
         return 0;
     }
+
+
+    protected abstract void fillDeletedElement(int index);
+
+    protected abstract void insertElement(Resume r, int index);
+
+    protected abstract int getIndex(String uuid);
+
+
 }
