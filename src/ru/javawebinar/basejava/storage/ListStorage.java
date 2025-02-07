@@ -1,10 +1,10 @@
 package ru.javawebinar.basejava.storage;
 
+import ru.javawebinar.basejava.exception.ExistStorageException;
 import ru.javawebinar.basejava.exception.NotExistStorageException;
 import ru.javawebinar.basejava.model.Resume;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class ListStorage extends AbstractStorage {
@@ -25,14 +25,28 @@ public class ListStorage extends AbstractStorage {
     }
 
     public void save(Resume r) {
-
+        if (collection.contains(r)) {
+            throw new ExistStorageException(r.getUuid());
+        }
+        collection.add(r);
     }
 
     public Resume get(String uuid) {
-        return null;
+        for (Resume r : collection) {
+            if (r.getUuid().equals(uuid)) {
+                return r;
+            }
+        }
+        throw new NotExistStorageException(uuid);
     }
 
     public void delete(String uuid) {
+
+        int index = getIndex(uuid);
+        if (index < 0) {
+            throw new NotExistStorageException(uuid);
+        }
+        collection.remove(index);
 
     }
 
@@ -43,7 +57,6 @@ public class ListStorage extends AbstractStorage {
     public int size() {
         return collection.size();
     }
-
 
     @Override
     protected void fillDeletedElement(int index) {
