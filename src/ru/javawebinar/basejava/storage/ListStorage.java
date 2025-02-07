@@ -41,13 +41,11 @@ public class ListStorage extends AbstractStorage {
     }
 
     public void delete(String uuid) {
-
         int index = getIndex(uuid);
         if (index < 0) {
             throw new NotExistStorageException(uuid);
         }
         collection.remove(index);
-
     }
 
     public Resume[] getAll() {
