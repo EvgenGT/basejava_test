@@ -33,7 +33,7 @@ public class ListStorageTest {
     @Test
     public void clear() {
         collection.clear();
-        assertEquals(0, collection.size(), "Размер хранилища должен составлять 0 (ноль) после очистки.");
+        assertEquals(0, collection.size(), 0, "Размер хранилища должен составлять 0 (ноль) после очистки.");
     }
 
     @Test

@@ -58,11 +58,8 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     protected void fillDeletedElement(int index) {
-        for (int i = 0; i < collection.size(); i++) {
-            if (i >= index) {
-                collection.remove(i);
-                return;
-            }
+        while (index < collection.size()) {
+            collection.remove(index);
         }
     }
 

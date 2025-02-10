@@ -4,12 +4,12 @@ import ru.javawebinar.basejava.exception.ExistStorageException;
 import ru.javawebinar.basejava.exception.NotExistStorageException;
 import ru.javawebinar.basejava.model.Resume;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class MapStorage extends AbstractStorage {
 
-    protected final Map<String, Resume> map = new HashMap<>();
+    protected final LinkedHashMap<String, Resume> map = new LinkedHashMap<>();
 
     public void clear() {
         map.clear();
@@ -46,7 +46,15 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected void fillDeletedElement(int index) {
-
+        int count = 0;
+        for (Map.Entry<String, Resume> entry : map.entrySet()) {
+            if (count == index) {
+                String keyToRemove = entry.getKey();
+                map.remove(keyToRemove);
+                break;
+            }
+            count++;
+        }
     }
 
     @Override
