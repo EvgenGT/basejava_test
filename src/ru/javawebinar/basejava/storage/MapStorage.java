@@ -4,8 +4,7 @@ import ru.javawebinar.basejava.exception.ExistStorageException;
 import ru.javawebinar.basejava.exception.NotExistStorageException;
 import ru.javawebinar.basejava.model.Resume;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class MapStorage extends AbstractStorage {
 
@@ -27,6 +26,10 @@ public class MapStorage extends AbstractStorage {
             throw new ExistStorageException(r.getUuid());
         }
         map.put(r.getUuid(), r);
+    }
+
+    public Resume get(String uuid) {
+        return null;
     }
 
     public void delete(String uuid) {
@@ -59,16 +62,24 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected void insertElement(Resume r, int index) {
+        if (index < 0 || index > map.size()) {
+            throw new IndexOutOfBoundsException("Некорректный индекс: " + index);
+        }
+        // Шаг 1: Получаем список всех записей (ключ-значение)
+        List<Map.Entry<String, Resume>> entries = new ArrayList<>(map.entrySet());
 
+        // Шаг 2: Вставляем новый элемент в нужную позицию в список
+        entries.add(index, new AbstractMap.SimpleEntry<>(r.getUuid(), r));
+
+        // Шаг 3: Создаём новый LinkedHashMap и заполняем его отсортированными парами
+        map.clear(); // Очищаем старый storage
+        for (Map.Entry<String, Resume> entry : entries) {
+            map.put(entry.getKey(), entry.getValue()); // Добавляем в новый LinkedHashMap
+        }
     }
 
     @Override
     protected int getIndex(String uuid) {
         return 0;
-    }
-
-    @Override
-    public Resume get(String uuid) {
-        return null;
     }
 }

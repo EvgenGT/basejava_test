@@ -58,14 +58,22 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     protected void fillDeletedElement(int index) {
-        while (index < collection.size()) {
-            collection.remove(index);
+        if (index < 0 || index >= collection.size()) {
+            throw new IndexOutOfBoundsException("Некорректный индекс: " + index);
         }
+        for (int i = index; i < collection.size() - 1; i++) {
+            collection.set(i, collection.get(i + 1));
+        }
+        collection.removeLast();
     }
 
     @Override
     protected void insertElement(Resume r, int index) {
-        collection.add(r);
+        if (index < 0 || index > collection.size()) {
+            throw new IndexOutOfBoundsException("Некорректный индекс: " + index+ ". Допустимый диапазон: 0 <= index <= " + collection.size());
+        }
+
+        collection.add(index, r);
     }
 
     @Override
@@ -80,3 +88,4 @@ public class ListStorage extends AbstractStorage {
         return -1;
     }
 }
+
