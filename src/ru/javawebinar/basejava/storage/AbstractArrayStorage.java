@@ -70,9 +70,10 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
         return size;
     }
 
-//    protected abstract void fillDeletedElement(int index);
-//
-//    protected abstract void insertElement(Resume r, int index);
-//
-//    protected abstract int getIndex(String uuid);
+    protected abstract void fillDeletedElement(int index);
+
+    protected abstract void insertElement(Resume r, int index);
+
+    protected abstract int getIndex(String uuid);
+
 }

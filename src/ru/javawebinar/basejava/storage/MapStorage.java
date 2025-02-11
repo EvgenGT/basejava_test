@@ -48,34 +48,12 @@ public class MapStorage extends AbstractStorage {
     }
 
     @Override
-    protected void fillDeletedElement(int index) {
-        int count = 0;
-        for (Map.Entry<String, Resume> entry : map.entrySet()) {
-            if (count == index) {
-                String keyToRemove = entry.getKey();
-                map.remove(keyToRemove);
-                break;
-            }
-            count++;
-        }
+    protected void fillDeletedElement(int key) {
     }
 
     @Override
     protected void insertElement(Resume r, int index) {
-        if (index < 0 || index > map.size()) {
-            throw new IndexOutOfBoundsException("Некорректный индекс: " + index);
-        }
-        // Шаг 1: Получаем список всех записей (ключ-значение)
-        List<Map.Entry<String, Resume>> entries = new ArrayList<>(map.entrySet());
 
-        // Шаг 2: Вставляем новый элемент в нужную позицию в список
-        entries.add(index, new AbstractMap.SimpleEntry<>(r.getUuid(), r));
-
-        // Шаг 3: Создаём новый LinkedHashMap и заполняем его отсортированными парами
-        map.clear(); // Очищаем старый storage
-        for (Map.Entry<String, Resume> entry : entries) {
-            map.put(entry.getKey(), entry.getValue()); // Добавляем в новый LinkedHashMap
-        }
     }
 
     @Override
