@@ -1,6 +1,5 @@
 package ru.javawebinar.basejava.storage;
 
-import ru.javawebinar.basejava.exception.ExistStorageException;
 import ru.javawebinar.basejava.exception.NotExistStorageException;
 import ru.javawebinar.basejava.model.Resume;
 
@@ -16,19 +15,22 @@ public class ListStorage extends AbstractStorage {
     }
 
     public void update(Resume r) {
-        int index = getIndex(r.getUuid());
-        if (index < 0) {
-            throw new NotExistStorageException("Резюме с UUID '" + r.getUuid() + "' не найдено.");
-        } else {
+        int index = collection.indexOf(r);
+        if (index != -1) {
             collection.set(index, r);
+            System.out.println("Резюме успешно обновлено.");
+        } else {
+            System.out.println("Резюме не найдено.");
         }
     }
 
     public void save(Resume r) {
         if (collection.contains(r)) {
-            throw new ExistStorageException(r.getUuid());
+            System.out.println("Резюме уже существует. Сохранение не выполнено.");
+            return;
         }
         collection.add(r);
+        System.out.println("Резюме успешно сохранено.");
     }
 
     public Resume get(String uuid) {
@@ -56,28 +58,27 @@ public class ListStorage extends AbstractStorage {
         return collection.size();
     }
 
-    @Override
-    protected void fillDeletedElement(int index) {
-        if (index < 0 || index >= collection.size()) {
-            throw new IndexOutOfBoundsException("Некорректный индекс: " + index);
-        }
-        for (int i = index; i < collection.size() - 1; i++) {
-            collection.set(i, collection.get(i + 1));
-        }
-        collection.removeLast();
-    }
+//    @Override
+//    protected void fillDeletedElement(int index) {
+//        if (index < 0 || index >= collection.size()) {
+//            throw new IndexOutOfBoundsException("Некорректный индекс: " + index);
+//        }
+//        for (int i = index; i < collection.size() - 1; i++) {
+//            collection.set(i, collection.get(i + 1));
+//        }
+//        collection.removeLast();
+//    }
+//
+//    @Override
+//    protected void insertElement(Resume r, int index) {
+//        if (index < 0 || index > collection.size()) {
+//            throw new IndexOutOfBoundsException("Некорректный индекс: " + index+ ". Допустимый диапазон: 0 <= index <= " + collection.size());
+//        }
+//
+//        collection.add(index, r);
+//    }
 
-    @Override
-    protected void insertElement(Resume r, int index) {
-        if (index < 0 || index > collection.size()) {
-            throw new IndexOutOfBoundsException("Некорректный индекс: " + index+ ". Допустимый диапазон: 0 <= index <= " + collection.size());
-        }
-
-        collection.add(index, r);
-    }
-
-    @Override
-    protected int getIndex(String uuid) {
+    public int getIndex(String uuid) {
         int index = 0;
         for (Resume resume : collection) {
             if (uuid.equals(resume.getUuid())) {

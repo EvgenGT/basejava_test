@@ -46,18 +46,4 @@ public class MapStorage extends AbstractStorage {
     public int size() {
         return map.size();
     }
-
-    @Override
-    protected void fillDeletedElement(int key) {
-    }
-
-    @Override
-    protected void insertElement(Resume r, int index) {
-
-    }
-
-    @Override
-    protected int getIndex(String uuid) {
-        return 0;
-    }
 }
