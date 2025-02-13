@@ -43,11 +43,13 @@ public class ListStorage extends AbstractStorage {
     }
 
     public void delete(String uuid) {
-        int index = getIndex(uuid);
-        if (index < 0) {
-            throw new NotExistStorageException(uuid);
+        Resume resumeToRemove = new Resume(uuid, "");
+        if (collection.contains(resumeToRemove)) {
+            collection.remove(resumeToRemove);
+            System.out.println("Элемент с UUID " + uuid + " удален.");
+        } else {
+            System.out.println("Элемент с UUID " + uuid + " не найден.");
         }
-        collection.remove(index);
     }
 
     public Resume[] getAll() {
@@ -56,37 +58,6 @@ public class ListStorage extends AbstractStorage {
 
     public int size() {
         return collection.size();
-    }
-
-//    @Override
-//    protected void fillDeletedElement(int index) {
-//        if (index < 0 || index >= collection.size()) {
-//            throw new IndexOutOfBoundsException("Некорректный индекс: " + index);
-//        }
-//        for (int i = index; i < collection.size() - 1; i++) {
-//            collection.set(i, collection.get(i + 1));
-//        }
-//        collection.removeLast();
-//    }
-//
-//    @Override
-//    protected void insertElement(Resume r, int index) {
-//        if (index < 0 || index > collection.size()) {
-//            throw new IndexOutOfBoundsException("Некорректный индекс: " + index+ ". Допустимый диапазон: 0 <= index <= " + collection.size());
-//        }
-//
-//        collection.add(index, r);
-//    }
-
-    public int getIndex(String uuid) {
-        int index = 0;
-        for (Resume resume : collection) {
-            if (uuid.equals(resume.getUuid())) {
-                return index;
-            }
-            index++;
-        }
-        return -1;
     }
 }
 

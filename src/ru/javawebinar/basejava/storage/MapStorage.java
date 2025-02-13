@@ -29,7 +29,12 @@ public class MapStorage extends AbstractStorage {
     }
 
     public Resume get(String uuid) {
-        return null;
+        if (map.containsKey(uuid)) {
+            return map.get(uuid);
+        } else {
+            System.out.println("Элемент с uuid " + uuid + " не найден в хранилище.");
+            return null;
+        }
     }
 
     public void delete(String uuid) {
