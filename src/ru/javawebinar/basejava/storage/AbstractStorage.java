@@ -1,34 +1,60 @@
 package ru.javawebinar.basejava.storage;
 
+import ru.javawebinar.basejava.exception.ExistStorageException;
+import ru.javawebinar.basejava.exception.NotExistStorageException;
 import ru.javawebinar.basejava.model.Resume;
 
 public abstract class AbstractStorage implements Storage {
 
-    public void clear() {
-    }
+    protected abstract void doUpdate(Resume r, Object searchKey);
+
+    protected abstract void doSave(Resume r, Object searchKey);
+
+    protected abstract void doDelete(Object searchKey);
+
+    protected abstract boolean ifExist(Object searchKey);
 
     public void update(Resume r) {
+        Object searchKey = getExistedSearchKey(r.getUuid());
+        doUpdate(r, searchKey);
     }
-
-    public void save(Resume r) {
-    }
-
-    public void delete(String uuid) {
-    }
-
-    public Resume[] getAll() {
-        return new Resume[0];
-    }
-
-    public int size() {
-        return 0;
-    }
-
-//
-//    protected abstract void fillDeletedElement(int index);
-//
-//    protected abstract void insertElement(Resume r, int index);
-//
-//    protected abstract int getIndex(String uuid);
-
 }
+
+private Object getSearchKey(String uuid) {
+    return null;
+}
+
+public void save(Resume r) {
+    Object searchKey = getNotExistedSearchKey(r.getUuid());
+    doSave(r, searchKey);
+}
+
+
+public void delete(String uuid) {
+    Object searchKey = getExistedSearchKey(uuid);
+    doDelete(searchKey);
+}
+
+
+private Object getExistedSearchKey(String uuid) {
+    Object searchKey = getSearchKey(uuid);
+    {
+        if (!ifExist(searchKey)) {
+            throw new NotExistStorageException(uuid);
+        }
+        return searchKey;
+    }
+}
+
+private Object getNotExistedKey(String uuid) {
+    Object searchKey = getSearchKey(uuid);
+    {
+        if (ifExist(searchKey)) {
+            throw new ExistStorageException(uuid);
+        }
+        return searchKey;
+    }
+}
+
+
+
