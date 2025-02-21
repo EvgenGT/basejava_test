@@ -54,7 +54,7 @@ public abstract class AbstractArrayStorageTest {
     @Test
     public void save() {
 
-        Resume newResume = new Resume("uuid1", "Name1");
+        Resume newResume = new Resume("uuid4", "Name4");
         storage.save(newResume);
         assertEquals(4, storage.size(), "Размер хранилища должен составлять 4 (четыре) после добавления нового резюме.");
     }
@@ -62,13 +62,11 @@ public abstract class AbstractArrayStorageTest {
     @Test
     public void delete() {
 
-        Resume resume4 = new Resume("uuid1", "Name1");
-        storage.save(resume4);
-        String uuidToDelete = resume4.getUuid();
+        Resume resume1 = new Resume("uuid1", "Name1");
+        storage.save(resume1);
+        String uuidToDelete = resume1.getUuid();
         storage.delete(uuidToDelete);
-
         assertEquals(3, storage.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
-
     }
 
     @Test
@@ -88,11 +86,11 @@ public abstract class AbstractArrayStorageTest {
 
     @Test
     public void storageOverflow() {
-        for (int i = 0; i < AbstractArrayStorage.STORAGE_LIMIT; i++) {
-            storage.save(new Resume("uuid1", "Name1"));
+        for (int i = 4; i <= AbstractArrayStorage.STORAGE_LIMIT; i++) {
+            storage.save(new Resume("uuid4", "Name4"));
         }
         try {
-            storage.save(new Resume("uuid1", "Name1"));
+            storage.save(new Resume("uuid4", "Name4"));
             fail("Ожидалось исключение StorageException, но оно не было брошено.");
         } catch (StorageException e) {
             assertEquals("Хранилище заполнено", e.getMessage());
