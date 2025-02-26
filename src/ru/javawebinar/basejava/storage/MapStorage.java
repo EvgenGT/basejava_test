@@ -2,7 +2,13 @@ package ru.javawebinar.basejava.storage;
 
 import ru.javawebinar.basejava.model.Resume;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MapStorage extends AbstractStorage {
+
+    private final Map<String, Resume> map = new HashMap<>();
+
     @Override
     protected Object getSearchKey(String uuid) {
         return null;
@@ -35,7 +41,6 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     public void clear() {
-
     }
 
     @Override
@@ -45,6 +50,6 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     public int size() {
-        return 0;
+        return this.map.size();
     }
 }
