@@ -12,6 +12,9 @@
       <root url="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-engine/1.9.0/junit-platform-engine-1.9.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/junit-jupiter-api-5.9.0-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/junit-jupiter-api-5.9.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>
