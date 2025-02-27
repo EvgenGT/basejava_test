@@ -86,16 +86,14 @@ public abstract class AbstractArrayStorageTest {
 
     @Test
     void saveOverflow() throws Exception {
-        // Заполняем хранилище до предела
         for (int i = 4; i <= AbstractArrayStorage.STORAGE_LIMIT; i++) {
             storage.save(new Resume("uuid4", "Name4"));
         }
-        // Проверяем, что следующее сохранение выбросит исключение
         try {
             storage.save(new Resume("uuid5", "Name5"));
             fail("Ожидалось исключение StorageException, но оно не было брошено.");
         } catch (StorageException e) {
-            // Исключение поймано, тест проходит
+            assertEquals("Storage overflow", e.getMessage());
         }
     }
 }
