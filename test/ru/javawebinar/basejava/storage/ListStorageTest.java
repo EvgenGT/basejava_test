@@ -1,8 +1,47 @@
 package ru.javawebinar.basejava.storage;
 
-class ListStorageTest extends AbstractArrayStorageTest {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-    public ListStorageTest() {
-        super(new ListStorage());
+class ListStorageTest {
+
+    @BeforeEach
+    void setUp() {
+    }
+
+    @Test
+    void getSearchKey() {
+    }
+
+    @Test
+    void doUpdate() {
+    }
+
+    @Test
+    void isExist() {
+    }
+
+    @Test
+    void doSave() {
+    }
+
+    @Test
+    void doGet() {
+    }
+
+    @Test
+    void doDelete() {
+    }
+
+    @Test
+    void clear() {
+    }
+
+    @Test
+    void getAll() {
+    }
+
+    @Test
+    void size() {
     }
 }
