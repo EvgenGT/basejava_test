@@ -2,46 +2,68 @@ package ru.javawebinar.basejava.storage;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.javawebinar.basejava.model.Resume;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ListStorageTest {
 
+    public List<Resume> storage = new ArrayList<>();
+
+//    public ListStorageTest(List<Resume> storage) {
+//        this.storage = new ArrayList<>(storage);
+//    }
+
     @BeforeEach
-    void setUp() {
+    public void setUp() {
+        storage.clear();
+
+        storage.add(new Resume("uuid1"));
+        storage.add(new Resume("uuid2"));
+        storage.add(new Resume("uuid3"));
     }
 
     @Test
-    void getSearchKey() {
+    public void getSearchKey() {
     }
 
     @Test
-    void doUpdate() {
+    public void doUpdate() {
     }
 
     @Test
-    void isExist() {
+    public void isExist() {
     }
 
     @Test
-    void doSave() {
+    public void doSave() {
+
+        Resume newResume = new Resume("uuid4", "Name4");
+        storage.add(newResume);
+        assertEquals(4, storage.size(), "Размер хранилища должен составлять 4 (четыре) после добавления нового резюме.");
     }
 
     @Test
-    void doGet() {
+    public void doGet() {
     }
 
     @Test
-    void doDelete() {
+    public void doDelete() {
+
     }
 
     @Test
-    void clear() {
+    public void clear() {
     }
 
     @Test
-    void getAll() {
+    public void getAll() {
     }
 
     @Test
-    void size() {
+    public void size() {
     }
 }
