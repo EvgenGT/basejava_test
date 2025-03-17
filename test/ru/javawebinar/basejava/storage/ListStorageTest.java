@@ -13,10 +13,6 @@ class ListStorageTest {
 
     public List<Resume> storage = new ArrayList<>();
 
-//    public ListStorageTest(List<Resume> storage) {
-//        this.storage = new ArrayList<>(storage);
-//    }
-
     @BeforeEach
     public void setUp() {
         storage.clear();
@@ -28,6 +24,7 @@ class ListStorageTest {
 
     @Test
     public void getSearchKey() {
+
     }
 
     @Test
@@ -52,11 +49,17 @@ class ListStorageTest {
 
     @Test
     public void doDelete() {
-
+        Resume newResume = new Resume("uuid4", "Name4");
+        storage.remove(newResume);
+        assertEquals(3, storage.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
     }
 
     @Test
     public void clear() {
+        System.out.println(storage.size());
+        storage.clear();
+        assertEquals(0, storage.size(), "Размер хранилища должен составлять 0 (ноль) после очистки.");
+        System.out.println(storage.size());
     }
 
     @Test
@@ -65,5 +68,7 @@ class ListStorageTest {
 
     @Test
     public void size() {
+        assertEquals(3, storage.size(), "Размер хранилища должен составлять 3 (три) резюме.");
+        System.out.println(storage.size());
     }
 }
