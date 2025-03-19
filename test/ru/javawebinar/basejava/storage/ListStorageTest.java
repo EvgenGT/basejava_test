@@ -8,10 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class ListStorageTest {
 
-    public List<Resume> storage = new ArrayList<>();
+    private final List<Resume> storage = new ArrayList<>();
 
     @BeforeEach
     public void setUp() {
@@ -23,39 +24,46 @@ class ListStorageTest {
     }
 
     @Test
-    public void getSearchKey() {
-
+    void getSearchKey() {
+        String uuid = "12345";
+        ListStorage storage = new ListStorage();
+        Object result = storage.getSearchKey(uuid);
+        System.out.println(result);  // Можно убрать, если не нужно
+        assertNull(result, "Должно вернуть null, если элемент не найден");
     }
 
     @Test
-    public void doUpdate() {
+    void doUpdate() {
+        System.out.println(storage.size());
     }
 
     @Test
-    public void isExist() {
+    void isExist() {
+        System.out.println(storage.size());
     }
 
     @Test
-    public void doSave() {
+    void doSave() {
 
         Resume newResume = new Resume("uuid4", "Name4");
         storage.add(newResume);
         assertEquals(4, storage.size(), "Размер хранилища должен составлять 4 (четыре) после добавления нового резюме.");
+        System.out.println(storage.size());
     }
 
     @Test
-    public void doGet() {
+    void doGet() {
     }
 
     @Test
-    public void doDelete() {
+    void doDelete() {
         Resume newResume = new Resume("uuid4", "Name4");
         storage.remove(newResume);
         assertEquals(3, storage.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
     }
 
     @Test
-    public void clear() {
+    void clear() {
         System.out.println(storage.size());
         storage.clear();
         assertEquals(0, storage.size(), "Размер хранилища должен составлять 0 (ноль) после очистки.");
@@ -63,11 +71,12 @@ class ListStorageTest {
     }
 
     @Test
-    public void getAll() {
+    void getAll() {
     }
 
     @Test
-    public void size() {
+    void size() {
+        storage.size();
         assertEquals(3, storage.size(), "Размер хранилища должен составлять 3 (три) резюме.");
         System.out.println(storage.size());
     }
