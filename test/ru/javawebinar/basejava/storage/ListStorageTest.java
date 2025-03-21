@@ -36,9 +36,10 @@ class ListStorageTest {
     void doUpdate() {
         Resume oldResume = new Resume("UUID_OLD");
         Resume newResume = new Resume("UUID_NEW");
-        storage.set(1, oldResume);
-        storage.set(1, newResume);
-        assertEquals(newResume, storage.get(1));
+        final int searchKey = 1;
+        storage.set(searchKey, oldResume);
+        storage.set(searchKey, newResume);
+        assertEquals(newResume, storage.get(searchKey));
     }
 
     @Test
