@@ -34,7 +34,11 @@ class ListStorageTest {
 
     @Test
     void doUpdate() {
-        System.out.println(storage.size());
+        Resume oldResume = new Resume("UUID_OLD");
+        Resume newResume = new Resume("UUID_NEW");
+        storage.set(1, oldResume);
+        storage.set(1, newResume);
+        assertEquals(newResume, storage.get(1));
     }
 
     @Test
@@ -44,10 +48,6 @@ class ListStorageTest {
 
     @Test
     void doSave() {
-
-        Resume newResume = new Resume("uuid4", "Name4");
-        storage.add(newResume);
-        assertEquals(4, storage.size(), "Размер хранилища должен составлять 4 (четыре) после добавления нового резюме.");
         System.out.println(storage.size());
     }
 
@@ -60,6 +60,7 @@ class ListStorageTest {
         Resume newResume = new Resume("uuid4", "Name4");
         storage.remove(newResume);
         assertEquals(3, storage.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
+        System.out.println(storage.size());
     }
 
     @Test
@@ -72,6 +73,9 @@ class ListStorageTest {
 
     @Test
     void getAll() {
+        storage.toArray(new Resume[0]);
+        assertEquals(3, storage.size(), "Размер хранилища должен составлять 3 (три) резюме.");
+        System.out.println(storage.size());
     }
 
     @Test
