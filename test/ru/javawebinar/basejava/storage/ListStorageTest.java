@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.javawebinar.basejava.model.Resume;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,11 +50,19 @@ class ListStorageTest {
 
     @Test
     void doSave() {
+        Resume newResume = new Resume("uuid4", "Name4");
+        storage.add(newResume);
+        assertEquals(4, storage.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
         System.out.println(storage.size());
     }
 
     @Test
     void doGet() {
+        Resume newResume = new Resume("UUID_NEW");
+        final int searchKey = 1;
+        storage.set(searchKey, newResume);
+        Resume result = storage.get(searchKey);
+        assertEquals(result, newResume, "Должно вернуть сохраненное резюме");
     }
 
     @Test

@@ -61,7 +61,6 @@ public abstract class AbstractArrayStorageTest {
 
     @Test
     public void delete() {
-
         Resume resume1 = new Resume("uuid1", "Name1");
         storage.save(resume1);
         String uuidToDelete = resume1.getUuid();
