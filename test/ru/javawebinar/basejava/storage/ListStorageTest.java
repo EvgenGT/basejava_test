@@ -4,12 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.javawebinar.basejava.model.Resume;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ListStorageTest {
 
@@ -45,7 +43,12 @@ class ListStorageTest {
 
     @Test
     void isExist() {
-        System.out.println(storage.size());
+        assertTrue(isExist("Hello"));  // Не null → должно вернуть true
+        assertFalse(isExist(null));    // Null → должно вернуть false
+    }
+
+    boolean isExist(Object searchKey) {
+        return searchKey != null;
     }
 
     @Test
@@ -63,6 +66,7 @@ class ListStorageTest {
         storage.set(searchKey, newResume);
         Resume result = storage.get(searchKey);
         assertEquals(result, newResume, "Должно вернуть сохраненное резюме");
+        System.out.println(result);
     }
 
     @Test
