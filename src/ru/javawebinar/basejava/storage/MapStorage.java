@@ -7,12 +7,12 @@ import java.util.Map;
 
 public class MapStorage extends AbstractStorage {
 
-    private final Map<String, Resume> storage = new HashMap<>();
+    private final Map<String, Resume> map = new HashMap<>();
 
     @Override
     protected Object getSearchKey(String uuid) {
-        for (int i = 0; i < storage.size(); i++) {
-            if (storage.get(Integer.toString(i)).getUuid().equals(uuid)) {
+        for (int i = 0; i < map.size(); i++) {
+            if (map.get(Integer.toString(i)).getUuid().equals(uuid)) { // Взять резюме → взять его uuid → сравнить с переданным
                 return i;
             }
         }
@@ -21,7 +21,7 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected void doUpdate(Resume r, Object searchKey) {
-        storage.put((String) searchKey, r);
+        map.put((String) searchKey, r);
     }
 
     @Override
@@ -31,31 +31,31 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected void doSave(Resume r, Object searchKey) {
-        storage.put(String.valueOf(searchKey), r);
+        map.put(String.valueOf(searchKey), r);
     }
 
     @Override
     protected Resume doGet(Object searchKey) {
-        return storage.get(String.valueOf(searchKey));
+        return map.get(String.valueOf(searchKey));
     }
 
     @Override
     protected void doDelete(Object searchKey) {
-        storage.remove(String.valueOf(searchKey));
+        map.remove(String.valueOf(searchKey));
     }
 
     @Override
     public void clear() {
-        storage.clear();
+        map.clear();
     }
 
     @Override
     public Resume[] getAll() {
-        return storage.values().toArray(new Resume[0]);
+        return map.values().toArray(new Resume[0]);
     }
 
     @Override
     public int size() {
-        return this.storage.size();
+        return this.map.size();
     }
 }
