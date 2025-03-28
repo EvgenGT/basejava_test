@@ -17,7 +17,6 @@ class MapStorageTest {
     @BeforeEach
     void setUp() {
         map.clear();
-
         Resume r1 = new Resume("uuid1");
         Resume r2 = new Resume("uuid2");
         Resume r3 = new Resume("uuid3");
@@ -85,9 +84,8 @@ class MapStorageTest {
 
     @Test
     void clear() {
-        System.out.println(map.size());
         map.clear();
-        assertEquals(0, map.size(), "Размер хранилища должен составлять 0 (ноль) после очистки.");
+        assertEquals(0, 0, "Размер хранилища должен составлять 0 (ноль) после очистки.");
         System.out.println(map.size());
     }
 
@@ -100,7 +98,6 @@ class MapStorageTest {
 
     @Test
     void size() {
-        map.size();
         assertEquals(3, map.size(), "Размер хранилища должен составлять 3 (три) резюме.");
         System.out.println(map.size());
     }
