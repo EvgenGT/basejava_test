@@ -24,11 +24,11 @@ class ListStorageTest {
 
     @Test
     void getSearchKey() {
-        String uuid = "12345";
+        String expected = "12345";
         ListStorage storage = new ListStorage();
-        Object result = storage.getSearchKey(uuid);
-        System.out.println(result);  // Можно убрать, если не нужно
-        assertNull(result, "Должно вернуть null, если элемент не найден");
+        Object actual = storage.getSearchKey(expected);
+        assertNull(actual, "Должно вернуть null, если элемент не найден");
+
     }
 
     @Test
