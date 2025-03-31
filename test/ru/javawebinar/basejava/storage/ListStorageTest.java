@@ -28,17 +28,15 @@ class ListStorageTest {
         ListStorage storage = new ListStorage();
         Object actual = storage.getSearchKey(expected);
         assertNull(actual, "Должно вернуть null, если элемент не найден");
-
     }
 
     @Test
     void doUpdate() {
-        Resume oldResume = new Resume("UUID_OLD");
         Resume newResume = new Resume("UUID_NEW");
         final int searchKey = 1;
-        storage.set(searchKey, oldResume);
         storage.set(searchKey, newResume);
-        assertEquals(newResume, storage.get(searchKey));
+        Object actual = storage.set(1, newResume);
+        assertEquals(actual, storage.get(searchKey), "Должно вернуть сохраненное резюме");
     }
 
     @Test
