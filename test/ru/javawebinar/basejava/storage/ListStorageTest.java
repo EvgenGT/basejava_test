@@ -41,18 +41,15 @@ class ListStorageTest {
 
     @Test
     void isExist() {
-        assertTrue(isExist("Hello"));  // Не null → должно вернуть true
-        assertFalse(isExist(null));    // Null → должно вернуть false
-    }
-
-    boolean isExist(Object searchKey) {
-        return searchKey != null;
+        ListStorage storage = new ListStorage();
+        assertTrue(storage.isExist("Hello"));
+        assertFalse(storage.isExist(null));
     }
 
     @Test
     void doSave() {
         Resume newResume = new Resume("uuid4", "Name4");
-        storage.add(newResume);
+        Object result = storage.add(newResume);
         assertEquals(4, storage.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
         System.out.println(storage.size());
     }
