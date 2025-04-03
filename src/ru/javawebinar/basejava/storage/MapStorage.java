@@ -12,7 +12,7 @@ public class MapStorage extends AbstractStorage {
     @Override
     protected Object getSearchKey(String uuid) {
         for (int i = 0; i < map.size(); i++) {
-            if (map.get(Integer.toString(i)).getUuid().equals(uuid)) { // Взять резюме → взять его uuid → сравнить с переданным
+            if (map.get(Integer.toString(i)).getUuid().equals(uuid)) {
                 return i;
             }
         }
@@ -56,6 +56,6 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     public int size() {
-        return this.map.size();
+        return map.size();
     }
 }

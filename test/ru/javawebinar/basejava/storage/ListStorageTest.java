@@ -48,8 +48,8 @@ class ListStorageTest {
 
     @Test
     void doSave() {
-        Resume newResume = new Resume("uuid4", "Name4");
-        Object result = storage.add(newResume);
+        Resume newResume = new Resume("uuid4");
+        storage.add(newResume);
         assertEquals(4, storage.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
         System.out.println(storage.size());
     }
