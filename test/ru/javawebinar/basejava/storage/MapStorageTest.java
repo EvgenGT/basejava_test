@@ -56,7 +56,6 @@ class MapStorageTest {
         Resume newResume = new Resume("uuid4");
         map.put(4, newResume);
         assertEquals(4, map.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
-        System.out.println(map.size());
     }
 
     @Test
@@ -66,7 +65,6 @@ class MapStorageTest {
         map.put(searchKey, newResume);
         Resume result = map.get(searchKey);
         assertEquals(result, newResume, "Должно вернуть сохраненное резюме");
-        System.out.println(result);
     }
 
     @Test
@@ -76,20 +74,17 @@ class MapStorageTest {
         map.put(searchKey, r4);
         map.remove(4);
         assertEquals(3, map.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
-        System.out.println(map.size());
     }
 
     @Test
     void clear() {
         map.clear();
         assertEquals(0, 0, "Размер хранилища должен составлять 0 (ноль) после очистки.");
-        System.out.println(map.size());
     }
 
     @Test
     void getAll() {
         Resume[] resumes = map.values().toArray(new Resume[0]);
-        System.out.println(map.size());
         assertEquals(3, map.size(), "Размер хранилища должен составлять 3 (три) резюме.");
         assertEquals(3, resumes.length, "Должно быть 3 резюме в массиве.");
     }
@@ -98,6 +93,5 @@ class MapStorageTest {
     void size() {
         map.size();
         assertEquals(3, map.size(), "Размер хранилища должен составлять 3 (три) резюме.");
-        System.out.println(map.size());
     }
 }
