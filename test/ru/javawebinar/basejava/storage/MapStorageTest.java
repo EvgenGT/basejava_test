@@ -17,14 +17,10 @@ class MapStorageTest {
     @BeforeEach
     void setUp() {
         map.clear();
-        Resume r1 = new Resume("uuid1");
-        Resume r2 = new Resume("uuid2");
-        Resume r3 = new Resume("uuid3");
 
-        map.put(1, r1);
-        map.put(2, r2);
-        map.put(3, r3);
-
+        map.put(1, new Resume("uuid1"));
+        map.put(2, new Resume("uuid2"));
+        map.put(3, new Resume("uuid3"));
     }
 
     @Test
