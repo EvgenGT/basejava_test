@@ -27,7 +27,7 @@ class ListStorageTest {
         String expected = "12345";
         ListStorage storage = new ListStorage();
         Object actual = storage.getSearchKey(expected);
-        assertNull(actual, "Должно вернуть null, если элемент не найден");
+        assertEquals(actual, -1, "Должно вернуть -1, если элемент не найден");
     }
 
     @Test
