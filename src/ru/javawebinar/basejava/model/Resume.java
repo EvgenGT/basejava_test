@@ -7,7 +7,9 @@ import java.util.UUID;
  */
 public class Resume implements Comparable<Resume> {
     // Unique identifier
-    public final String uuid;
+    private final String uuid;
+
+    private String fullName;
 
     public Resume(String uuid1, String name1) {
         this(UUID.randomUUID().toString());
