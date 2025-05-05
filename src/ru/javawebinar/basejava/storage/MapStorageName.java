@@ -10,33 +10,33 @@ public class MapStorageName extends AbstractStorage {
     private final Map<String, Resume> map = new HashMap<>();
 
     @Override
-    protected Object getSearchKey(String fullName) {
-        return fullName;
+    protected Object getSearchKey(String email) {
+        return email;
     }
 
     @Override
-    protected void doUpdate(Resume r, Object fullName) {
-        map.put((String) fullName, r);
+    protected void doUpdate(Resume r, Object email) {
+        map.put((String) email, r);
     }
 
     @Override
-    protected boolean isExist(Object fullName) {
-        return map.containsKey(String.valueOf(fullName));
+    protected boolean isExist(Object email) {
+        return map.containsKey(String.valueOf(email));
     }
 
     @Override
-    protected void doSave(Resume r, Object fullName) {
-        map.put(String.valueOf(fullName), r);
+    protected void doSave(Resume r, Object email) {
+        map.put(String.valueOf(email), r);
     }
 
     @Override
-    protected Resume doGet(Object fullName) {
-        return map.get(String.valueOf(fullName));
+    protected Resume doGet(Object email) {
+        return map.get(String.valueOf(email));
     }
 
     @Override
-    protected void doDelete(Object fullName) {
-        map.remove(String.valueOf(fullName));
+    protected void doDelete(Object email) {
+        map.remove(String.valueOf(email));
     }
 
     @Override

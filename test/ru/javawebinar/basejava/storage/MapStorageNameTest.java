@@ -23,10 +23,10 @@ class MapStorageNameTest {
 
     @Test
     void getSearchKey() {
-        String fullName = "John Malcolm";
-        MapStorage storage = new MapStorage();
-        Object actual = storage.getSearchKey(fullName);
-        assertEquals("John Malcolm", actual, "Должно вернуть -1, если элемент не найден");
+        String email = "user@gmail.com";
+        MapStorageName storage = new MapStorageName();
+        Object actual = storage.getSearchKey(email);
+        assertEquals("user@gmail.com", actual, "Должно вернуть -1, если элемент не найден");
     }
 
     @Test
