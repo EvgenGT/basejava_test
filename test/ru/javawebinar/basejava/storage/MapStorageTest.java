@@ -26,8 +26,8 @@ class MapStorageTest {
     @Test
     void getSearchKey() {
         String expected = "12345";
-        MapStorage storage = new MapStorage();
-        Object actual = storage.getSearchKey(expected);
+        MapStorage map = new MapStorage();
+        Object actual = map.getSearchKey(expected);
         assertEquals("12345", actual, "Должно вернуть -1, если элемент не найден");
     }
 

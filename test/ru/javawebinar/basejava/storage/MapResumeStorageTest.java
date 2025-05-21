@@ -9,64 +9,60 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MapStorageNameTest {
-    private final Map<Integer, Resume> map = new HashMap<>();
+class MapResumeStorageTest {
+    private final Map<String, Resume> map = new HashMap<>();
 
     @BeforeEach
     void setUp() {
         map.clear();
 
-        map.put(1, new Resume("uuid1"));
-        map.put(2, new Resume("uuid2"));
-        map.put(3, new Resume("uuid3"));
+        map.put("1", new Resume("uuid1"));
+        map.put("2", new Resume("uuid2"));
+        map.put("3", new Resume("uuid3"));
     }
 
     @Test
     void getSearchKey() {
-        String email = "user@gmail.com";
-        MapStorageName storage = new MapStorageName();
-        Object actual = storage.getSearchKey(email);
-        assertEquals("user@gmail.com", actual, "Должно вернуть -1, если элемент не найден");
+        Resume newResume1 = new Resume("uuid4");
+        MapResumeStorage map = new MapResumeStorage();
+        map.doSave(newResume1, "uuid4");
+        Object result = map.getSearchKey("uuid4");
+        assertEquals(newResume1, result, "Должно вернуть сохраненное резюме");
     }
 
     @Test
     void doUpdate() {
         Resume newResume = new Resume("UUID_NEW");
-        final int searchKey = 1;
-        map.put(searchKey, newResume);
-        Object actual = map.put(1, newResume);
-        assertEquals(actual, map.get(searchKey), "Должно вернуть сохраненное резюме");
+        map.put("1", newResume);
+        Object actual = map.put("1", newResume);
+        assertEquals(actual, map.get("1"), "Должно вернуть сохраненное резюме");
     }
 
     @Test
     void isExist() {
-        assertTrue(map.containsKey(1));
-        assertFalse(map.containsKey(4));
+        assertTrue(map.containsKey("1"));
+        assertFalse(map.containsKey("4"));
     }
 
     @Test
     void doSave() {
         Resume newResume = new Resume("uuid4");
-        map.put(4, newResume);
+        map.put("4", newResume);
         assertEquals(4, map.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
     }
 
     @Test
     void doGet() {
         Resume newResume = new Resume("uuid1");
-        final int searchKey = 1;
-        map.put(searchKey, newResume);
-        Resume result = map.get(searchKey);
+        map.put("1", newResume);
+        Resume result = map.get("1");
         assertEquals(result, newResume, "Должно вернуть сохраненное резюме");
     }
 
     @Test
     void doDelete() {
-        Resume r4 = new Resume("uuid4");
-        final int searchKey = 4;
-        map.put(searchKey, r4);
-        map.remove(4);
-        assertEquals(3, map.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
+        map.remove("3");
+        assertEquals(2, map.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
     }
 
     @Test
