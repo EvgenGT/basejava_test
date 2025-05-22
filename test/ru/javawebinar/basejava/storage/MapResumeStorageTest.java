@@ -48,7 +48,7 @@ class MapResumeStorageTest {
     void doSave() {
         Resume newResume = new Resume("uuid4");
         map.put("4", newResume);
-        assertEquals(4, map.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
+        assertEquals(4, map.size(), "Размер хранилища должен должен быть равен 4 (четыре) после добавления нового резюме.");
     }
 
     @Test

@@ -12,15 +12,15 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class MapStorageTest {
 
-    private final Map<Integer, Resume> map = new HashMap<>();
+    private final Map<String, Resume> map = new HashMap<>();
 
     @BeforeEach
     void setUp() {
         map.clear();
 
-        map.put(1, new Resume("uuid1"));
-        map.put(2, new Resume("uuid2"));
-        map.put(3, new Resume("uuid3"));
+        map.put("1", new Resume("uuid1"));
+        map.put("2", new Resume("uuid2"));
+        map.put("3", new Resume("uuid3"));
     }
 
     @Test
@@ -35,21 +35,22 @@ class MapStorageTest {
     void doUpdate() {
         Resume newResume = new Resume("UUID_NEW");
         final int searchKey = 1;
-        map.put(searchKey, newResume);
-        Object actual = map.put(1, newResume);
-        assertEquals(actual, map.get(searchKey), "Должно вернуть сохраненное резюме");
+        map.put(String.valueOf(searchKey), newResume);
+        Object actual = map.put("1", newResume);
+        System.out.println(actual);
+        assertEquals(actual, map.get(String.valueOf(searchKey)), "Должно вернуть сохраненное резюме");
     }
 
     @Test
     void isExist() {
-        assertTrue(map.containsKey(1));
-        assertFalse(map.containsKey(4));
+        assertTrue(map.containsKey("1"));
+        assertFalse(map.containsKey("4"));
     }
 
     @Test
     void doSave() {
         Resume newResume = new Resume("uuid4");
-        map.put(4, newResume);
+        map.put("4", newResume);
         assertEquals(4, map.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
     }
 
@@ -57,8 +58,8 @@ class MapStorageTest {
     void doGet() {
         Resume newResume = new Resume("uuid1");
         final int searchKey = 1;
-        map.put(searchKey, newResume);
-        Resume result = map.get(searchKey);
+        map.put(String.valueOf(searchKey), newResume);
+        Resume result = map.get(String.valueOf(searchKey));
         assertEquals(result, newResume, "Должно вернуть сохраненное резюме");
     }
 
@@ -66,8 +67,8 @@ class MapStorageTest {
     void doDelete() {
         Resume r4 = new Resume("uuid4");
         final int searchKey = 4;
-        map.put(searchKey, r4);
-        map.remove(4);
+        map.put(String.valueOf(searchKey), r4);
+        map.remove("4");
         assertEquals(3, map.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
     }
 
