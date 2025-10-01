@@ -1,0 +1,16 @@
+package ru.javawebinar.basejava.storage;
+import org.junit.platform.suite.api.SelectClasses;
+import org.junit.platform.suite.api.Suite;
+
+@Suite
+@SelectClasses ({
+        AbstractArrayStorageTest.class,
+        ArrayStorageTest.class,
+        ListStorageTest.class,
+        MapStorageTest.class,
+        MapResumeStorageTest.class,
+        SortedArrayStorage.class,
+})
+
+public class AllStorageTest {
+}
