@@ -9,7 +9,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MapUUidStorageTest {
+class MapUuidStorageTest {
     private final Map<String, Resume> map = new HashMap<>();
 
     @BeforeEach
