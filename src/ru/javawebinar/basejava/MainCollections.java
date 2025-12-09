@@ -26,9 +26,7 @@ public class MainCollections {
 
         for (Resume r : collection) {
             System.out.println(r);
-            if (Objects.equals(r.getUuid(), UUID_1)) {
-//                collection.remove(r);
-            }
+            //                collection.remove(r);
         }
 
         Iterator<Resume> iterator = collection.iterator();
@@ -39,7 +37,7 @@ public class MainCollections {
                 iterator.remove();
             }
         }
-        System.out.println(collection.toString());
+        System.out.println(collection);
 
         Map<String, Resume> map = new HashMap<>();
         map.put(UUID_1, RESUME_1);
