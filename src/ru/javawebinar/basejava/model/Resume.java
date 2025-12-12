@@ -1,5 +1,6 @@
 package ru.javawebinar.basejava.model;
 
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -11,12 +12,15 @@ public class Resume implements Comparable<Resume> {
 
     private String fullName;
 
-    public Resume(String ignoredUuid1, String ignoredName1) {
-        this(UUID.randomUUID().toString());
+    public Resume(String fullName) {
+        this(UUID.randomUUID().toString(), fullName);
     }
 
-    public Resume(String uuid) {
+    public Resume(String uuid, String fullName) {
+        Objects.requireNonNull(uuid, "uuid must not be bull");
+        Objects.requireNonNull(fullName, "fullName must not be bull");
         this.uuid = uuid;
+        this.fullName = fullName;
     }
 
     public String getUuid() {

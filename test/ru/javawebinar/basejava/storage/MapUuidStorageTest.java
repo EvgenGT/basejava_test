@@ -85,7 +85,8 @@ class MapUuidStorageTest {
 
     @Test
     void size() {
-        map.size();
+        int size = map.size();
+        System.out.println(size);
         assertEquals(3, map.size(), "Размер хранилища должен составлять 3 (три) резюме.");
     }
 }

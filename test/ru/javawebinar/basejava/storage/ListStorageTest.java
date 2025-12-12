@@ -89,7 +89,6 @@ class ListStorageTest {
 
     @Test
     void size() {
-        storage.size();
         assertEquals(3, storage.size(), "Размер хранилища должен составлять 3 (три) резюме.");
         System.out.println(storage.size());
     }
