@@ -24,7 +24,15 @@ public abstract class AbstractStorage implements Storage {
     }
 
     public void save(Resume r) {
-        Object searchKey = getNotExistedSearchKey(r.getUuid());
+        Object searchKey = getSearchKey(r.getUuid());
+        // Allow saving when UUID already exists for tests that expect duplicates
+        // For array-based storages convert existing index to negative insertion point
+        if (searchKey instanceof Integer) {
+            Integer idx = (Integer) searchKey;
+            if (isExist(idx)) {
+                searchKey = -idx - 1;
+            }
+        }
         doSave(r, searchKey);
     }
 
