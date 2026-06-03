@@ -1,95 +1,98 @@
 package ru.javawebinar.basejava.storage;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import ru.javawebinar.basejava.model.Resume;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import ru.javawebinar.basejava.model.Resume;
 
 class ListStorageTest {
 
-    private final List<Resume> storage = new ArrayList<>();
+  private final List<Resume> storage = new ArrayList<>();
 
-    @BeforeEach
-    public void setUp() {
-        storage.clear();
+  @BeforeEach
+  public void setUp() {
+    storage.clear();
 
-        storage.add(new Resume("uuid1"));
-        storage.add(new Resume("uuid2"));
-        storage.add(new Resume("uuid3"));
-    }
+    storage.add(new Resume("uuid1"));
+    storage.add(new Resume("uuid2"));
+    storage.add(new Resume("uuid3"));
+  }
 
-    @Test
-    void getSearchKey() {
-        String expected = "12345";
-        ListStorage storage = new ListStorage();
-        Object actual = storage.getSearchKey(expected);
-        assertEquals(actual, -1, "Должно вернуть -1, если элемент не найден");
-    }
+  @Test
+  void getSearchKey() {
+    String expected = "12345";
+    ListStorage storage = new ListStorage();
+    Object actual = storage.getSearchKey(expected);
+    assertEquals(actual, -1, "Должно вернуть -1, если элемент не найден");
+  }
 
-    @Test
-    void doUpdate() {
-        Resume newResume = new Resume("UUID_NEW");
-        final int searchKey = 1;
-        storage.set(searchKey, newResume);
-        Object actual = storage.set(1, newResume);
-        assertEquals(actual, storage.get(searchKey), "Должно вернуть сохраненное резюме");
-    }
+  @Test
+  void doUpdate() {
+    Resume newResume = new Resume("UUID_NEW");
+    final int searchKey = 1;
+    storage.set(searchKey, newResume);
+    Object actual = storage.set(1, newResume);
+    assertEquals(actual, storage.get(searchKey), "Должно вернуть сохраненное резюме");
+  }
 
-    @Test
-    void isExist() {
-        ListStorage storage = new ListStorage();
-        assertTrue(storage.isExist("Hello"));
-        assertFalse(storage.isExist(null));
-    }
+  @Test
+  void isExist() {
+    ListStorage storage = new ListStorage();
+    assertTrue(storage.isExist("Hello"));
+    assertFalse(storage.isExist(null));
+  }
 
-    @Test
-    void doSave() {
-        Resume newResume = new Resume("uuid4");
-        storage.add(newResume);
-        assertEquals(4, storage.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
-        System.out.println(storage.size());
-    }
+  @Test
+  void doSave() {
+    Resume newResume = new Resume("uuid4");
+    storage.add(newResume);
+    assertEquals(4, storage.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
+    System.out.println(storage.size());
+  }
 
-    @Test
-    void doGet() {
-        Resume newResume = new Resume("UUID_NEW");
-        final int searchKey = 1;
-        storage.set(searchKey, newResume);
-        Resume result = storage.get(searchKey);
-        assertEquals(result, newResume, "Должно вернуть сохраненное резюме");
-        System.out.println(result);
-    }
+  @Test
+  void doGet() {
+    Resume newResume = new Resume("UUID_NEW");
+    final int searchKey = 1;
+    storage.set(searchKey, newResume);
+    Resume result = storage.get(searchKey);
+    assertEquals(result, newResume, "Должно вернуть сохраненное резюме");
+    System.out.println(result);
+  }
 
-    @Test
-    void doDelete() {
-        Resume newResume = new Resume("uuid4", "Name4");
-        storage.remove(newResume);
-        assertEquals(3, storage.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
-        System.out.println(storage.size());
-    }
+  @Test
+  void doDelete() {
+    Resume newResume = new Resume("uuid4", "Name4");
+    storage.remove(newResume);
+    assertEquals(3, storage.size(), "Размер хранилища должен уменьшиться на 1 после удаления");
+    System.out.println(storage.size());
+  }
 
-    @Test
-    void clear() {
-        System.out.println(storage.size());
-        storage.clear();
-        assertEquals(0, storage.size(), "Размер хранилища должен составлять 0 (ноль) после очистки.");
-        System.out.println(storage.size());
-    }
+  @Test
+  void clear() {
+    System.out.println(storage.size());
+    storage.clear();
+    assertEquals(0, storage.size(), "Размер хранилища должен составлять 0 (ноль) после очистки.");
+    System.out.println(storage.size());
+  }
 
-    @Test
-    void getAll() {
-        storage.toArray(new Resume[0]);
-        assertEquals(3, storage.size(), "Размер хранилища должен составлять 3 (три) резюме.");
-        System.out.println(storage.size());
-    }
+  @Test
+  void getAll() {
+    storage.toArray(new Resume[0]);
+    assertEquals(3, storage.size(), "Размер хранилища должен составлять 3 (три) резюме.");
+    System.out.println(storage.size());
+  }
 
-    @Test
-    void size() {
-        assertEquals(3, storage.size(), "Размер хранилища должен составлять 3 (три) резюме.");
-        System.out.println(storage.size());
-    }
+  @Test
+  void size() {
+    assertEquals(3, storage.size(), "Размер хранилища должен составлять 3 (три) резюме.");
+    System.out.println(storage.size());
+  }
 }
