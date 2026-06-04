@@ -3,10 +3,8 @@ package ru.javawebinar.basejava;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 import ru.javawebinar.basejava.model.Resume;
 import ru.javawebinar.basejava.storage.SortedArrayStorage;
-
 
 public class MainArray {
   private static final SortedArrayStorage ARRAY_STORAGE = new SortedArrayStorage();
@@ -35,12 +33,12 @@ public class MainArray {
           System.out.println(ARRAY_STORAGE.size());
           break;
         case "update":
-          r = new Resume(uuid);
+          r = new Resume(uuid, "Update");
           ARRAY_STORAGE.update(r);
           printAll();
           break;
         case "save":
-          r = new Resume(uuid);
+          r = new Resume(uuid, "New");
           ARRAY_STORAGE.save(r);
           printAll();
           break;
@@ -49,7 +47,7 @@ public class MainArray {
           printAll();
           break;
         case "get":
-          System.out.println(ARRAY_STORAGE);
+          System.out.println(ARRAY_STORAGE.get(uuid));
           break;
         case "clear":
           ARRAY_STORAGE.clear();
