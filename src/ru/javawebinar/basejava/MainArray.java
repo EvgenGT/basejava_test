@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import ru.javawebinar.basejava.model.Resume;
+import java.util.List;
 import ru.javawebinar.basejava.storage.SortedArrayStorage;
 
 public class MainArray {
@@ -63,9 +64,9 @@ public class MainArray {
   }
 
   static void printAll() {
-    Resume[] all = ARRAY_STORAGE.getAll();
+    List<Resume> all = ARRAY_STORAGE.getAllSorted();
     System.out.println("----------------------------");
-    if (all.length == 0) {
+    if (all.isEmpty()) {
       System.out.println("Empty");
     } else {
       for (Resume r : all) {

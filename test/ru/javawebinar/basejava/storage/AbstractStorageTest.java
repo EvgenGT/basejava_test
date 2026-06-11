@@ -47,7 +47,7 @@ public abstract class AbstractStorageTest {
 
   @Test
   public void getAll() {
-    assertEquals(3, storage.getAll().length, "Размер хранилища должен составлять 3 (три) резюме.");
+    assertEquals(3, storage.getAllSorted().size(), "Размер хранилища должен составлять 3 (три) резюме.");
   }
 
   @Test

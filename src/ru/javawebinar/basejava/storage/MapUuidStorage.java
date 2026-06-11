@@ -2,7 +2,8 @@ package ru.javawebinar.basejava.storage;
 
 import java.util.HashMap;
 import java.util.Map;
-
+import java.util.List;
+import java.util.ArrayList;
 import ru.javawebinar.basejava.model.Resume;
 
 public class MapUuidStorage extends AbstractStorage {
@@ -45,8 +46,10 @@ public class MapUuidStorage extends AbstractStorage {
   }
 
   @Override
-  public Resume[] getAll() {
-    return map.values().toArray(new Resume[0]);
+  public List<Resume> getAllSorted() {
+    List<Resume> list = new ArrayList<>(map.values());
+    list.sort(Resume.FULLNAME_UUID_COMPARATOR);
+    return list;
   }
 
   @Override

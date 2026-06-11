@@ -2,6 +2,7 @@ package ru.javawebinar.basejava.model;
 
 import java.util.Objects;
 import java.util.UUID;
+import java.util.Comparator;
 
 /** ru.javawebinar.basejava.model.Resume class */
 public class Resume implements Comparable<Resume> {
@@ -25,6 +26,10 @@ public class Resume implements Comparable<Resume> {
     return uuid;
   }
 
+  public String getFullName() {
+    return fullName;
+  }
+
   @Override
   public String toString() {
     return uuid;
@@ -34,4 +39,7 @@ public class Resume implements Comparable<Resume> {
   public int compareTo(Resume o) {
     return uuid.compareTo(o.uuid);
   }
+
+  public static final Comparator<Resume> FULLNAME_UUID_COMPARATOR =
+      Comparator.comparing((Resume r) -> r.getFullName()).thenComparing(Resume::getUuid);
 }
