@@ -1,0 +1,11 @@
+ru/javawebinar/basejava/exception/NotExistStorageExceptionTest.class
+ru/javawebinar/basejava/storage/AllStorageTest.class
+ru/javawebinar/basejava/storage/AbstractArrayStorageTest.class
+ru/javawebinar/basejava/exception/StorageExceptionTest.class
+ru/javawebinar/basejava/exception/ExistStorageExceptionTest.class
+ru/javawebinar/basejava/storage/AbstractStorageTest.class
+ru/javawebinar/basejava/storage/ArrayStorageTest.class
+ru/javawebinar/basejava/storage/ListStorageTest.class
+ru/javawebinar/basejava/model/ResumeTest.class
+ru/javawebinar/basejava/storage/SortedArrayStorageTest.class
+ru/javawebinar/basejava/storage/MapUuidStorageTest.class
