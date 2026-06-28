@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ru.javawebinar.basejava.storage.ArrayStorageTest" time="0.017" tests="9" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ru.javawebinar.basejava.model.ResumeTest" time="0.066" tests="11" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -54,13 +54,15 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="delete" classname="ru.javawebinar.basejava.storage.ArrayStorageTest" time="0.001"/>
-  <testcase name="getAll" classname="ru.javawebinar.basejava.storage.ArrayStorageTest" time="0.001"/>
-  <testcase name="update" classname="ru.javawebinar.basejava.storage.ArrayStorageTest" time="0.001"/>
-  <testcase name="getNotExist" classname="ru.javawebinar.basejava.storage.ArrayStorageTest" time="0.002"/>
-  <testcase name="get" classname="ru.javawebinar.basejava.storage.ArrayStorageTest" time="0.001"/>
-  <testcase name="save" classname="ru.javawebinar.basejava.storage.ArrayStorageTest" time="0.001"/>
-  <testcase name="size" classname="ru.javawebinar.basejava.storage.ArrayStorageTest" time="0.001"/>
-  <testcase name="clear" classname="ru.javawebinar.basejava.storage.ArrayStorageTest" time="0.002"/>
-  <testcase name="saveOverflow" classname="ru.javawebinar.basejava.storage.ArrayStorageTest" time="0.003"/>
+  <testcase name="testConstructorWithNullFullName" classname="ru.javawebinar.basejava.model.ResumeTest" time="0.022"/>
+  <testcase name="testGetFullName" classname="ru.javawebinar.basejava.model.ResumeTest" time="0.001"/>
+  <testcase name="testToString" classname="ru.javawebinar.basejava.model.ResumeTest" time="0.001"/>
+  <testcase name="testFullnameUuidComparatorExists" classname="ru.javawebinar.basejava.model.ResumeTest" time="0.002"/>
+  <testcase name="testCompareTo" classname="ru.javawebinar.basejava.model.ResumeTest" time="0.002"/>
+  <testcase name="testGetUuid" classname="ru.javawebinar.basejava.model.ResumeTest" time="0.001"/>
+  <testcase name="testFullnameUuidComparator" classname="ru.javawebinar.basejava.model.ResumeTest" time="0.001"/>
+  <testcase name="testConstructorWithUuidAndFullName" classname="ru.javawebinar.basejava.model.ResumeTest" time="0.001"/>
+  <testcase name="testConstructorWithFullName" classname="ru.javawebinar.basejava.model.ResumeTest" time="0.013"/>
+  <testcase name="testComparableInterface" classname="ru.javawebinar.basejava.model.ResumeTest" time="0.001"/>
+  <testcase name="testConstructorWithNullUuid" classname="ru.javawebinar.basejava.model.ResumeTest" time="0.001"/>
 </testsuite>
